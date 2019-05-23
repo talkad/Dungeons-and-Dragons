@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DeterministicNumber implements RandomGenerator {
 
-	private List<Character> numbers;
+	private List<Integer> numbers;
 	private int index;
 
 	public DeterministicNumber() {
@@ -22,10 +22,10 @@ public class DeterministicNumber implements RandomGenerator {
 	private void read() {
 		numbers = new ArrayList<>();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\User\\eclipse-workspace\\DungeonsAndDragons\\src\\random_numbers.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\User\\eclipse-workspace\\DungeonsAndDragons\\deterministic\\random_numbers.txt"));
 			String next;
 			while ((next = reader.readLine()) != null) {
-				numbers.add(next.charAt(0));
+				numbers.add(Integer.parseInt(next));
 			}
 
 		} catch (FileNotFoundException e) {
@@ -37,7 +37,7 @@ public class DeterministicNumber implements RandomGenerator {
 
 	@Override
 	public int nextInt(int n) {
-		if (index < numbers.size() && numbers.get(index) <= n && numbers.get(index) >= 0) {
+		if (index < numbers.size()) {
 			int num = numbers.get(index);
 			index++;
 			return num;

@@ -33,7 +33,7 @@ public class Mage extends Player {
 			for (Enemies enemy : Controller.currentEnemies) {
 				if (hits < hitTimes && position.dist(enemy.position) <= range) {
 					if (Math.random() < 0.5) { // select random enemy within range
-						int defense = enemy.rollDefend();
+						int defense = Controller.random.nextInt(enemy.defensePoints);
 						Controller.message += enemy.name + " rolled " + defense + " defense points.\n";
 						int damage = spellPower - defense;
 						if (damage < 0)

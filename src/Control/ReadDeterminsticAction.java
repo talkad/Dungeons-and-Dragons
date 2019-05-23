@@ -20,7 +20,7 @@ public class ReadDeterminsticAction implements ActionReader {
 	private void read() {
 		actions = new ArrayList<>();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\User\\eclipse-workspace\\DungeonsAndDragons\\src\\user_actions.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\User\\eclipse-workspace\\DungeonsAndDragons\\deterministic\\user_actions.txt"));
 			String next;
 			while ((next = reader.readLine()) != null) {
 				actions.add(next);
@@ -35,7 +35,6 @@ public class ReadDeterminsticAction implements ActionReader {
 
 	@Override
 	public String nextAction() {
-		System.out.println(index+"<"+actions.size());
 		if (index < actions.size()) {
 			String act = actions.get(index);
 			index++;

@@ -30,7 +30,7 @@ public class Rogue extends Player {
 			Controller.message += this.name + " cast Fan of Knives.\n";
 			for (Enemies enemy : Controller.currentEnemies) {
 				if (position.dist(enemy.position) < 2) {
-					int defense = enemy.rollDefend();
+					int defense = Controller.random.nextInt(enemy.defensePoints);
 					Controller.message += enemy.name + " rolled " + defense + " defense points.\n";
 					int damage = attackPoints - defense;
 					if (damage < 0)

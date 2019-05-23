@@ -7,12 +7,10 @@ import Control.RandomGenerator;
 public class UserInterface {
 	private Controller control;
 	private ActionReader action;
-	private RandomGenerator random;
 
-	public UserInterface(Controller control, ActionReader action, RandomGenerator random) {
+	public UserInterface(Controller control, ActionReader action) {
 		this.control = control;
 		this.action = action;
-		this.random = random;
 	}
 
 	// prints the borad and the game stats
@@ -34,10 +32,12 @@ public class UserInterface {
 			char ch;
 			System.out.println("Use w/s/a/d to move.\nUse e for special ability or q to pass.");
 			print();
-			while (!control.isGameOver()) {
-				ch = action.nextAction().charAt(0);
+			String str=action.nextAction();
+			while (!control.isGameOver() && str.length()!=0) {
+				ch = str.charAt(0);
 				control.move(ch);
 				print();
+				str=action.nextAction();
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

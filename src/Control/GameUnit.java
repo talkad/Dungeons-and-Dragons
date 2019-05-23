@@ -91,18 +91,11 @@ public abstract class GameUnit extends Observable {
 		}
 	}
 
-	public int rollDefend() {
-		return (int) (Math.random() * (defensePoints + 1));
-	}
-
-	public int rollHit() {
-		return (int) (Math.random() * (attackPoints + 1));
-	}
 
 	// Returns true if the defender dies. false otherwise
 	public boolean combat(GameUnit defender) {
-		int attackDamge = rollDefend();
-		int defense = defender.rollDefend();
+		int attackDamge = Controller.random.nextInt(this.attackPoints);
+		int defense = Controller.random.nextInt(defender.defensePoints);
 
 		Controller.message += this.name + " engaged in battle with " + defender.name + ":\n";
 		Controller.message += this.toString();

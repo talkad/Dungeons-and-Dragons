@@ -12,13 +12,15 @@ public class Controller implements Observer {
 	public static String message;
 	private int levelIndex;
 	private String path; // path to the levels directory
+	public static RandomGenerator random;
 
-	public Controller(String path, Player pl) {
+	public Controller(String path, Player pl, RandomGenerator random) {
 		levelIndex = 1;
 		board = BoardModel.read(path + "\\level " + levelIndex + ".txt");
 		this.path = path;
 		currentPlayer = pl;
 		message = "";
+		this.random=random;
 		initializeEnemies();
 	}
 

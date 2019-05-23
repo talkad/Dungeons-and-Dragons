@@ -56,18 +56,16 @@ public class view {
 					System.out.println("You have selected:");
 					Player player = plList.get(selectedPlayer - 1);
 					System.out.println(player);
-					control = new Controller(args[0], player);
+					control = new Controller(args[0], player, random);
 				}
 			} else if (args.length == 2 && args[1].equals("-D")) {
 				System.out.println("You have selected:");
-				String str=action.nextAction();
-				//int num=Integer.parseInt(str);
-				Player player = plList.get(5-1);
+				Player player = plList.get(Integer.parseInt(action.nextAction())-1);
 				System.out.println(player);
-				control = new Controller(args[0], player);
+				control = new Controller(args[0], player, random);
 			}
 
-			UserInterface ui = new UserInterface(control, action, random);
+			UserInterface ui = new UserInterface(control, action);
 			ui.startGame();
 		}
 	}
