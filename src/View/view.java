@@ -37,7 +37,8 @@ public class view {
 					new Warrior("The Hound", 400, 400, 20, 6, 0, 0, 4),
 					new Mage("Melisandre", 160, 160, 10, 1, 0, 0, 40, 300, 30, 5, 6),
 					new Mage("Thoros Of Myr", 250, 250, 25, 3, 0, 0, 15, 150, 50, 3, 3),
-					new Rogue("Arya Stark", 150, 150, 40, 2, 0, 0, 20), new Rogue("Bronn", 250, 250, 35, 3, 0, 0, 60));
+					new Rogue("Arya Stark", 150, 150, 40, 2, 0, 0, 20), 
+					new Rogue("Bronn", 250, 250, 35, 3, 0, 0, 60));
 
 			System.out.println("Select player:");
 			int index = 1;

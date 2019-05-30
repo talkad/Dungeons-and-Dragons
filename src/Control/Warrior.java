@@ -41,6 +41,7 @@ public class Warrior extends Player {
 		}
 	}
 
+
 	public Integer getCooldown() {
 		return cooldown;
 	}

@@ -25,7 +25,16 @@ public abstract class GameUnit extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-
+	
+	public Position getPosition() {
+		return position;
+	}
+	
+	public int getCurrentHealth() {
+		return health.getCurrentHealth();
+	}
+	
+	
 	public String toString() {
 		return name + "		Health: " + health.getCurrentHealth() + "		Attack damage: " + attackPoints
 				+ "		Defense: " + defensePoints + "\n";
@@ -33,8 +42,7 @@ public abstract class GameUnit extends Observable {
 
 	public void moveLeft() {
 		GameUnit gu = Controller.getGameUnitAt(position.getX() - 1, position.getY());
-		if (Controller.isDisapearedTrap(position.getX() - 1, position.getY())) { // returns true if there is a trap in
-																					// that location
+		if (Controller.isDisapearedTrap(position.getX() - 1, position.getY())) { // returns true if there is a trap in																					// that location
 			Controller.combat(this, gu);
 		} else if (Controller.board[position.getY()][position.getX() - 1] == '.') {
 			Controller.board[position.getY()][position.getX()] = '.';

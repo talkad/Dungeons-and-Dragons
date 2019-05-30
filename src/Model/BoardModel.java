@@ -23,7 +23,6 @@ public class BoardModel {
 				row = lines.get(i);
 				for (int j = 0; j < lines.get(0).length(); j++) {
 					board[i][j] = row.charAt(j);
-					;
 				}
 			}
 			return board;

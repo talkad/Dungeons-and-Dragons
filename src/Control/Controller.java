@@ -10,21 +10,21 @@ public class Controller implements Observer {
 	public static List<Enemies> currentEnemies;
 	public static char[][] board;
 	public static String message;
+	public static RandomGenerator random;
 	private int levelIndex;
 	private String path; // path to the levels directory
-	public static RandomGenerator random;
 
-	public Controller(String path, Player pl, RandomGenerator random) {
+	public Controller(String path, Player pl, RandomGenerator rand) {
 		levelIndex = 1;
 		board = BoardModel.read(path + "\\level " + levelIndex + ".txt");
 		this.path = path;
 		currentPlayer = pl;
 		message = "";
-		this.random=random;
+		random=rand;
 		initializeEnemies();
 	}
 
-	private void initializeEnemies() {
+	public void initializeEnemies() {
 		currentEnemies = new LinkedList<Enemies>();
 		Monster m;
 		Trap t;
@@ -147,7 +147,7 @@ public class Controller implements Observer {
 		return false;
 	}
 
-	public static GameUnit getGameUnitAt(int x, int y) // it must be an enemy or player
+	public static GameUnit getGameUnitAt(int x, int y) // it must be either an enemy or player
 	{
 		for (Enemies enemy : currentEnemies) {
 			if (enemy.position.getX() == x && enemy.position.getY() == y)
@@ -156,6 +156,7 @@ public class Controller implements Observer {
 		return currentPlayer;
 	}
 
+	// Check if there is a disappeared trap in a specific location so any game unit cannot pass through it 
 	public static boolean isDisapearedTrap(int x, int y) {
 		for (Enemies enemy : currentEnemies) {
 			if (enemy.position.getX() == x && enemy.position.getY() == y && board[y][x] == '.')

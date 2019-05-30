@@ -17,15 +17,27 @@ public abstract class Player extends GameUnit {
 			experience = experience - (50 * level);
 			level++;
 			health.setHealthPool(health.getHealthPool() + (10 * level));
-			int h=health.getHealthPool()-health.getCurrentHealth();
 			health.setCurrentHealth(health.getHealthPool());
 			attackPoints = attackPoints + (5 * level);
 			defensePoints = defensePoints + (2 * level);
-			Controller.message += "Level up: +" +health+ " Health, +" + (5 * level) + " Attack, +"
+			Controller.message += "Level up: +" +(10 * level)+ " Health, +" + (5 * level) + " Attack, +"
 					+ (2 * level) + " Defense\n";
 		}
 	}
 
+	public int getLevel() {
+		return level;
+	}
+	
+	public int getDefense() {
+		return defensePoints;
+	}
+	
+	public void setHealth(int points) {
+		health.setCurrentHealth(points);
+	}
+	
+	
 	public abstract void specialAbility();
 
 	public abstract void onGameTick();
