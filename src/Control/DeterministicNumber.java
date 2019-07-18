@@ -21,8 +21,9 @@ public class DeterministicNumber implements RandomGenerator {
 
 	private void read() {
 		numbers = new ArrayList<>();
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\User\\eclipse-workspace\\DungeonsAndDragons\\deterministic\\random_numbers.txt"));
+		try {		
+			//BufferedReader reader = new BufferedReader(new FileReader("../"+Controller.path + "/random_numbers.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("random_numbers.txt"));
 			String next;
 			while ((next = reader.readLine()) != null) {
 				numbers.add(Integer.parseInt(next));

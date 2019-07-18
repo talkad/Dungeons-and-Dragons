@@ -12,12 +12,12 @@ public class Controller implements Observer {
 	public static String message;
 	public static RandomGenerator random;
 	private int levelIndex;
-	private String path; // path to the levels directory
+	public static String path; // path to the levels directory
 
 	public Controller(String path, Player pl, RandomGenerator rand) {
 		levelIndex = 1;
-		board = BoardModel.read(path + "\\level " + levelIndex + ".txt");
-		this.path = path;
+		board = BoardModel.read(path + "/level " + levelIndex + ".txt");
+		Controller.path = path;
 		currentPlayer = pl;
 		message = "";
 		random=rand;
@@ -125,8 +125,15 @@ public class Controller implements Observer {
 	public void move(char ch) {
 		message = "";
 		currentPlayer.move(ch);
-		for (Enemies en : currentEnemies)
-			en.move(currentPlayer);
+		LinkedList<Enemies> remove=new LinkedList<Enemies>();
+		for (Enemies en : currentEnemies) {
+			if(en.getCurrentHealth()>0)
+				en.move(currentPlayer);
+			else
+				remove.add(en);
+		}
+		for(Enemies en : remove)
+			currentEnemies.remove(en);
 		if (isNextlevel())
 			message += "You passed to the next level";
 	}

@@ -32,7 +32,7 @@ public class Mage extends Player {
 			Controller.message += this.name + " cast Blizzard.\n";
 			for (Enemies enemy : Controller.currentEnemies) {
 				if (hits < hitTimes && position.dist(enemy.position) <= range) {
-					if (Math.random() < 0.5) { // select random enemy within range
+					if (Math.random() <= 0.5) { // select random enemy within range
 						int defense = Controller.random.nextInt(enemy.defensePoints);
 						Controller.message += enemy.name + " rolled " + defense + " defense points.\n";
 						int damage = spellPower - defense;

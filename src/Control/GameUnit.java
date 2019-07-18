@@ -86,8 +86,7 @@ public abstract class GameUnit extends Observable {
 
 	public void moveDown() {
 		GameUnit gu = Controller.getGameUnitAt(position.getX(), position.getY() + 1);
-		if (Controller.isDisapearedTrap(position.getX(), position.getY() + 1)) { // returns true if there is a trap in
-																					// that location
+		if (Controller.isDisapearedTrap(position.getX(), position.getY() + 1)) { // returns true if there is a trap in																					// that location
 			Controller.combat(this, gu);
 		} else if (Controller.board[position.getY() + 1][position.getX()] == '.') {
 			Controller.board[position.getY()][position.getX()] = '.';

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Control.Controller;
+
 public class BoardModel {
 
 	public static char[][] read(String path) {
@@ -27,9 +29,9 @@ public class BoardModel {
 			}
 			return board;
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found " + path);
+			Controller.message+="You Won!";
 		} catch (IOException e) {
-			System.out.println(e.getMessage() + "\n" + e.getStackTrace());
+			Controller.message+="You Won!";
 		}
 		return null;
 	}
